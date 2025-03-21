@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b68b3gyaw5mie"]
+
+[ext_resource type="Texture2D" uid="uid://b3if8eg6j3oin" path="res://textures/brick_pavement.jpg" id="1_jyd0j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srh3t"]
+albedo_texture = ExtResource("1_jyd0j")
+
+[node name="pavement" type="CSGBox3D"]
+use_collision = true
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_srh3t")

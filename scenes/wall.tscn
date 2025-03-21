@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://enqeu8q65ryc"]
+
+[ext_resource type="Texture2D" uid="uid://c2v8m00b8e5rs" path="res://textures/bricks.jpg" id="1_xxgf6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlp04"]
+albedo_texture = ExtResource("1_xxgf6")
+
+[node name="wall" type="CSGBox3D"]
+use_collision = true
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_xlp04")

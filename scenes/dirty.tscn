@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c61j1133u4vwl"]
+
+[ext_resource type="Texture2D" uid="uid://l5b15ckgf2kk" path="res://textures/concrete_dirty.jpg" id="1_0ychq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_341ea"]
+albedo_texture = ExtResource("1_0ychq")
+
+[node name="dirty" type="CSGBox3D"]
+use_collision = true
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_341ea")

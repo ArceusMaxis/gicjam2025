@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://cn25twdl582gt"]
+
+[ext_resource type="Script" uid="uid://dshi1uv0ic6hf" path="res://scripts/player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+radius = 0.25
+height = 1.5
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+resource_name = "dead"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.63, 0.91, 1.25, 1.53, 1.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.75, 0.5, 0.75, 0.5, 0.35, 0.2, 0.3]
+}
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+resource_name = "dying"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 1.0, 0.5, 0.75]
+}
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+resource_name = "flicker"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.67, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.75, 0.5, 0.4, 0.7, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+resource_name = "good"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.34, 0.466667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.8, 1.0, 0.7, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sweqy"]
+_data = {
+&"RESET": SubResource("Animation_hqtel"),
+&"dead": SubResource("Animation_sweqy"),
+&"dying": SubResource("Animation_i3pqv"),
+&"flicker": SubResource("Animation_onrkg"),
+&"good": SubResource("Animation_4flbx")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.2, -0.2, -0.1)
+light_color = Color(1, 0.690196, 0.215686, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sweqy")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789827, -2)
+visible = false
+mesh = SubResource("BoxMesh_4flbx")
