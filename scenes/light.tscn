@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://5ncogy4kikrx"]
+
+[ext_resource type="Script" uid="uid://dblaaqygf8fyf" path="res://scripts/light.gd" id="1_5qqhr"]
+[ext_resource type="PackedScene" uid="uid://difjfmylo312f" path="res://models/light.glb" id="1_we4ua"]
+[ext_resource type="PackedScene" uid="uid://jyekuht3r76p" path="res://models/matchbox.glb" id="2_5qqhr"]
+[ext_resource type="AudioStream" uid="uid://bsivb06vni1p1" path="res://audio/ledhum.wav" id="4_gr6e6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njlvs"]
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_5qqhr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_njlvs")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.8, -0.5)
+
+[node name="light" parent="SpotLight3D" instance=ExtResource("1_we4ua")]
+transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 0, 0.0730279, 0.0988288)
+
+[node name="matchbox" parent="." instance=ExtResource("2_5qqhr")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0.05, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.4)
+stream = ExtResource("4_gr6e6")
+autoplay = true
+max_distance = 3.0
+bus = &"hum"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

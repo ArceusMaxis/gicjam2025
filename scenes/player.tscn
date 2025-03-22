@@ -1,17 +1,54 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn25twdl582gt"]
+[gd_scene load_steps=28 format=3 uid="uid://cn25twdl582gt"]
 
 [ext_resource type="Script" uid="uid://dshi1uv0ic6hf" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://cycbn6yc22xyc" path="res://textures/hand.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://cdqd5m2jv553n" path="res://audio/footstep1.wav" id="3_fjrip"]
+[ext_resource type="AudioStream" uid="uid://dllwcj1cnp0bs" path="res://audio/good_match_start.wav" id="3_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://uys335xrdfi8" path="res://audio/footstep2.wav" id="4_smehm"]
+[ext_resource type="AudioStream" uid="uid://cblluoobs7cn6" path="res://audio/footstep3.wav" id="5_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://cmh2u882dm306" path="res://audio/footstep4.wav" id="6_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://co1fm0ih0y5mr" path="res://audio/footstep5.wav" id="7_d2wvv"]
+[ext_resource type="AudioStream" uid="uid://bux5v0148nny4" path="res://audio/good_crackle.wav" id="8_smehm"]
+[ext_resource type="AudioStream" uid="uid://c5lv5x4adn6cb" path="res://audio/noise1.wav" id="10_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://dxx45wydfdkp5" path="res://audio/noise2.wav" id="11_jej6c"]
+[ext_resource type="AudioStream" uid="uid://wul2ks6755xy" path="res://audio/noise3.wav" id="12_f1ej7"]
+[ext_resource type="AudioStream" uid="uid://bmonqmge8xdmw" path="res://audio/noise4.wav" id="13_jej6c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 radius = 0.25
 height = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
+size = Vector3(0.323242, 0.388245, 0.0947266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 0, 336, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("2_g2els")
+region = Rect2(336, 0, 336, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_hqtel"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/path = NodePath("Camera3D/Sprite3D/SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,6 +57,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_sweqy"]
 resource_name = "dead"
@@ -27,7 +76,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/path = NodePath("Camera3D/Sprite3D/SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,7 +92,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/path = NodePath("Camera3D/Sprite3D/SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +109,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/path = NodePath("Camera3D/Sprite3D/SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,18 +121,46 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4flbx"]
 resource_name = "good"
+length = 20.0
 loop_mode = 1
-tracks/0/type = "value"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/SpotLight3D:light_energy")
+tracks/0/path = NodePath("AudioStreamPlayer3D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.34, 0.466667, 0.566667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.8, 1.0, 0.7, 1.0]
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ur7pv")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Sprite3D/SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.503559, 0.554769, 1.18635, 1.22049, 1.2717, 1.88621, 1.94596, 2.67996, 2.99575, 3.92606, 4.26745, 4.87343, 5.21483, 6.44385, 6.78525, 7.4339, 7.7753),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 0.0, 1.0, 0.2, 0.0, 1.0, 0.0, 1.5, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/Sprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.68849),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sweqy"]
@@ -97,18 +174,52 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3v2ag"]
+random_pitch = 1.2
+random_volume_offset_db = 0.1
+streams_count = 5
+stream_0/stream = ExtResource("3_fjrip")
+stream_1/stream = ExtResource("4_smehm")
+stream_2/stream = ExtResource("5_ur7pv")
+stream_3/stream = ExtResource("6_y4r1p")
+stream_4/stream = ExtResource("7_d2wvv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ur7pv"]
+random_volume_offset_db = 0.5
+streams_count = 4
+stream_0/stream = ExtResource("10_3v2ag")
+stream_1/stream = ExtResource("11_jej6c")
+stream_2/stream = ExtResource("12_f1ej7")
+stream_3/stream = ExtResource("13_jej6c")
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4flbx")
+quip_array = Array[String](["Everything looks the same...", "What was that noise?", "I must get out of here somehow...", "Not again, not again!!", "Feels like its been hours of this...", "Should pack cigarettes next time", "This is not good...", "I should have been careful"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_4flbx")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245117, 0.939972, -0.444216)
+shape = SubResource("BoxShape3D_g2els")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.2, -0.2, -0.1)
+[node name="Sprite3D" type="AnimatedSprite3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243135, -0.21605, -0.447976)
+visible = false
+layers = 2
+pixel_size = 0.001
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_dqkch")
+autoplay = "default"
+frame_progress = 0.978011
+
+[node name="SpotLight3D" type="OmniLight3D" parent="Camera3D/Sprite3D"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.0962183, 0.102268, 0)
+layers = 2
 light_color = Color(1, 0.690196, 0.215686, 1)
 
 [node name="Control" type="Control" parent="."]
@@ -117,17 +228,192 @@ anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 
+[node name="Pause" type="ColorRect" parent="Control"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.560784)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -29.0
+offset_right = 56.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Pause/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Paused" type="Label" parent="Control/Pause/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.712, 0.28, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/Pause/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Control/Pause/VBoxContainer/VBoxContainer/ColorRect"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.712, 0.28, 1)
+
+[node name="Control" type="Control" parent="Control/Pause/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="PBut" type="Button" parent="Control/Pause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+
+[node name="QMMBut" type="Button" parent="Control/Pause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Quit to Main Menu"
+
+[node name="QBut" type="Button" parent="Control/Pause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Quit to Desktop"
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -28.0
+offset_right = 208.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.712, 0.28, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "You found another match."
+
+[node name="quip" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.5
+offset_top = 6.0
+offset_right = 101.5
+offset_bottom = 29.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.712, 0.28, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Random shit goes here!!"
+horizontal_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_sweqy")
 }
 
 [node name="Timer" type="Timer" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+process_callback = 1
 wait_time = 30.0
 one_shot = true
 autostart = true
+ignore_time_scale = false
+script = null
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789827, -2)
 visible = false
 mesh = SubResource("BoxMesh_4flbx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="FSA" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3v2ag")
+
+[node name="Crackle" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_smehm")
+
+[node name="NoiserParent" type="Marker3D" parent="."]
+
+[node name="Noiser" type="AudioStreamPlayer3D" parent="NoiserParent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+stream = SubResource("AudioStreamRandomizer_ur7pv")
+volume_db = -20.0
+bus = &"Noises"
+
+[node name="NoiserTimer" type="Timer" parent="NoiserParent"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+process_callback = 1
+wait_time = 13.0
+one_shot = false
+autostart = true
+ignore_time_scale = false
+script = null
+
+[connection signal="pressed" from="Control/Pause/VBoxContainer/PBut" to="." method="_on_p_but_pressed"]
+[connection signal="pressed" from="Control/Pause/VBoxContainer/QMMBut" to="." method="_on_qmm_but_pressed"]
+[connection signal="pressed" from="Control/Pause/VBoxContainer/QBut" to="." method="_on_q_but_pressed"]
