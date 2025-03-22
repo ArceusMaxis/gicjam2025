@@ -194,7 +194,7 @@ stream_3/stream = ExtResource("13_jej6c")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4flbx")
-quip_array = Array[String](["Everything looks the same...", "What was that noise?", "I must get out of here somehow...", "Not again, not again!!", "Feels like its been hours of this...", "Should pack cigarettes next time", "This is not good...", "I should have been careful"])
+quip_array = Array[String](["Everything looks the same...", "What was that noise?", "I must get out of here somehow...", "Not again, not again!!", "Feels like its been hours of this...", "Should pack cigarettes next time", "This is not good...", "I should have been careful", "Man, i hate this part of the job!!", "This is not real, this is not real", "Shoulda joined artifact labelling", "I better get a raise after this...", "Jenne, get me outta here please", "Why do i not feel thirsty or hungry?", "1768,1769,1770,1771,1772..."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -359,21 +359,9 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-process_callback = 1
 wait_time = 30.0
 one_shot = true
 autostart = true
-ignore_time_scale = false
-script = null
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789827, -2)
@@ -398,21 +386,8 @@ volume_db = -20.0
 bus = &"Noises"
 
 [node name="NoiserTimer" type="Timer" parent="NoiserParent"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-process_callback = 1
 wait_time = 13.0
-one_shot = false
 autostart = true
-ignore_time_scale = false
-script = null
 
 [connection signal="pressed" from="Control/Pause/VBoxContainer/PBut" to="." method="_on_p_but_pressed"]
 [connection signal="pressed" from="Control/Pause/VBoxContainer/QMMBut" to="." method="_on_qmm_but_pressed"]
