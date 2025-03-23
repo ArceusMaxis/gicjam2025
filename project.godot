@@ -16,7 +16,9 @@ config/features=PackedStringArray("4.4")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://bal7ke3joivlr"
-config/icon="res://icon.svg"
+config/icon="uid://l5ium8c133x6"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
 boot_splash/minimum_display_time=1000
 
 [audio]
@@ -70,3 +72,4 @@ escape={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://t8ldg28d3tnb"]
+
+[ext_resource type="Script" uid="uid://crctm2krxjr5l" path="res://scripts/climax.gd" id="1_opd1w"]
+[ext_resource type="VideoStream" path="res://videos/phsphrsclimax.ogv" id="1_une84"]
+
+[node name="Climax" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_opd1w")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_une84")
+autoplay = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

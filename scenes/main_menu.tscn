@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://wukglpblg5ii"]
+[gd_scene load_steps=13 format=3 uid="uid://wukglpblg5ii"]
 
 [ext_resource type="Script" uid="uid://neeoeuojftsj" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="AudioStream" uid="uid://bl0y83wr3jou" path="res://audio/03 unsolved crimes .wav" id="1_l6cm7"]
+[ext_resource type="VideoStream" uid="uid://dnhfpkgpas1io" path="res://videos/pmm.ogv" id="2_wu84c"]
 [ext_resource type="Texture2D" uid="uid://4c8fu366xnll" path="res://textures/dossier.png" id="3_bqqt6"]
+[ext_resource type="FontFile" uid="uid://r48vpclp18x3" path="res://DEATH_FONT.TTF" id="4_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://dxhbp33ok32wr" path="res://Phosphorus.png" id="5_8ln24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtw2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa1go"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk1qb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dd4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgwnu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,55 +28,108 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ekxnf")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_wu84c")
+loop = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 641.0
+offset_bottom = 123.0
+texture = ExtResource("5_8ln24")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_l6cm7")
 autoplay = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = -225.0
-offset_right = 167.0
+offset_left = -304.0
+offset_top = -96.0
+offset_right = 304.0
+grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 25
+alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oa1go")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jk1qb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5dd4i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lgwnu")
 text = "Play"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oa1go")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jk1qb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5dd4i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lgwnu")
 text = "Credits"
 
 [node name="GICJ" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oa1go")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jk1qb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5dd4i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lgwnu")
 text = "GIC Jam"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_rtw2f")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oa1go")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jk1qb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5dd4i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lgwnu")
 text = "Quit
 "
 

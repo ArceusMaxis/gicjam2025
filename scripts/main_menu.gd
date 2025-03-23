@@ -12,6 +12,10 @@ var _timer = 0.0
 var blink_speed = 0.3
 const SEWERS = preload("res://scenes/sewers.tscn")
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$VideoStreamPlayer.play()
+
 func _on_play_pressed() -> void:
 	banner.visible = true
 	vis = true

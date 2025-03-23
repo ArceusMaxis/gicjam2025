@@ -142,6 +142,7 @@ func _on_q_but_pressed() -> void:
 	get_tree().quit()
 
 func _on_qmm_but_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func quip_random():

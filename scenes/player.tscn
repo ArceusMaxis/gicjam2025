@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://cn25twdl582gt"]
+[gd_scene load_steps=35 format=3 uid="uid://cn25twdl582gt"]
 
 [ext_resource type="Script" uid="uid://dshi1uv0ic6hf" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cycbn6yc22xyc" path="res://textures/hand.png" id="2_g2els"]
+[ext_resource type="FontFile" uid="uid://r48vpclp18x3" path="res://DEATH_FONT.TTF" id="3_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://cdqd5m2jv553n" path="res://audio/footstep1.wav" id="3_fjrip"]
 [ext_resource type="AudioStream" uid="uid://dllwcj1cnp0bs" path="res://audio/good_match_start.wav" id="3_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://uys335xrdfi8" path="res://audio/footstep2.wav" id="4_smehm"]
@@ -42,6 +43,18 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1ej7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oprun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8ls1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfm1y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fulsm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4r5pv"]
 
 [sub_resource type="Animation" id="Animation_hqtel"]
 length = 0.001
@@ -145,10 +158,10 @@ tracks/1/path = NodePath("Camera3D/Sprite3D/SpotLight3D:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.503559, 0.554769, 1.18635, 1.22049, 1.2717, 1.88621, 1.94596, 2.67996, 2.99575, 3.92606, 4.26745, 4.87343, 5.21483, 6.44385, 6.78525, 7.4339, 7.7753),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.503559, 0.554769, 1.18635, 1.22049, 1.2717, 1.88621, 1.94596, 2.67996, 2.99575, 3.92606, 4.26745, 4.87343, 5.21483, 6.44385, 6.78525, 7.4339, 7.7753, 8.50125, 8.84265, 9.4913, 9.8327, 10.8012, 11.1426, 11.7913, 12.1327, 13.0287, 13.3701, 14.0188, 14.3602, 15.7288, 16.0702, 16.7188, 17.0602, 17.6794, 18.0208, 18.6694, 19.0108, 19.4194, 19.7608),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0.0, 1.0, 0.0, 1.0, 0.2, 0.0, 1.0, 0.0, 1.5, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0]
+"values": [0.0, 1.0, 0.0, 1.0, 0.2, 0.0, 1.0, 0.0, 1.5, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0, 0.8, 1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -194,7 +207,7 @@ stream_3/stream = ExtResource("13_jej6c")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4flbx")
-quip_array = Array[String](["Everything looks the same...", "What was that noise?", "I must get out of here somehow...", "Not again, not again!!", "Feels like its been hours of this...", "Should pack cigarettes next time", "This is not good...", "I should have been careful", "Man, i hate this part of the job!!", "This is not real, this is not real", "Shoulda joined artifact labelling", "I better get a raise after this...", "Jenne, get me outta here please", "Why do i not feel thirsty or hungry?", "1768,1769,1770,1771,1772..."])
+quip_array = Array[String](["Everything looks the same...", "What was that noise?", "I must get out of here somehow...", "Not again, not again!!", "Feels like its been hours of this...", "Should pack cigarettes next time", "This is not good...", "I should have been careful", "Man, I hate this part of the job!!", "This is not real, this is not real", "Shoulda joined artifact labelling", "I better get a raise after this...", "Jenne, get me outta here please", "Why do I not feel thirsty or hungry?", "1768,1769,1770,1771,1772..."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -221,6 +234,7 @@ frame_progress = 0.978011
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.0962183, 0.102268, 0)
 layers = 2
 light_color = Color(1, 0.690196, 0.215686, 1)
+omni_range = 3.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -256,7 +270,7 @@ theme_override_constants/separation = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Pause/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = -5
+theme_override_constants/separation = 0
 
 [node name="Paused" type="Label" parent="Control/Pause/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -264,6 +278,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.712, 0.28, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_f1ej7")
 theme_override_font_sizes/font_size = 36
 text = "GAME PAUSED"
 horizontal_alignment = 1
@@ -299,7 +314,14 @@ size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_f1ej7")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ej7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oprun")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_a8ls1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qfm1y")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fulsm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4r5pv")
 text = "Continue"
 
 [node name="QMMBut" type="Button" parent="Control/Pause/VBoxContainer"]
@@ -308,7 +330,14 @@ size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_f1ej7")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ej7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oprun")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_a8ls1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qfm1y")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fulsm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4r5pv")
 text = "Quit to Main Menu"
 
 [node name="QBut" type="Button" parent="Control/Pause/VBoxContainer"]
@@ -317,7 +346,14 @@ size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.972549, 0.694118, 0.270588, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_f1ej7")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1ej7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oprun")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_a8ls1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qfm1y")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fulsm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4r5pv")
 text = "Quit to Desktop"
 
 [node name="Label" type="Label" parent="Control"]
@@ -334,6 +370,8 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.712, 0.28, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_f1ej7")
+theme_override_font_sizes/font_size = 25
 text = "You found another match."
 
 [node name="quip" type="Label" parent="Control"]
@@ -350,6 +388,8 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.712, 0.28, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_f1ej7")
+theme_override_font_sizes/font_size = 26
 text = "Random shit goes here!!"
 horizontal_alignment = 1
 

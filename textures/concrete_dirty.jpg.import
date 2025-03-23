@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://l5b15ckgf2kk"
 path.s3tc="res://.godot/imported/concrete_dirty.jpg-47e1ae6d63cb708fe16a44299e49670f.s3tc.ctex"
+path.etc2="res://.godot/imported/concrete_dirty.jpg-47e1ae6d63cb708fe16a44299e49670f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/concrete_dirty.jpg"
-dest_files=["res://.godot/imported/concrete_dirty.jpg-47e1ae6d63cb708fe16a44299e49670f.s3tc.ctex"]
+dest_files=["res://.godot/imported/concrete_dirty.jpg-47e1ae6d63cb708fe16a44299e49670f.s3tc.ctex", "res://.godot/imported/concrete_dirty.jpg-47e1ae6d63cb708fe16a44299e49670f.etc2.ctex"]
 
 [params]
 
